@@ -60,7 +60,8 @@ M.colorscheme_conf = {
 
 --- Use a random colorscheme from the pre-defined list of colorschemes.
 M.rand_colorscheme = function()
-  local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme_conf))
+  local colorscheme = "catppuccin"
+  ---utils.rand_element(vim.tbl_keys(M.colorscheme_conf))
 
   if not vim.tbl_contains(vim.tbl_keys(M.colorscheme_conf), colorscheme) then
     local msg = "Invalid colorscheme: " .. colorscheme

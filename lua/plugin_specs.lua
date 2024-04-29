@@ -48,6 +48,26 @@ local plugin_specs = {
   },
 
   {
+    "SmiteshP/nvim-navic",
+    -- lazy = true,
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
+    config = function()
+      require("config.nvim-navic")
+    end,
+  },
+
+  {
+    "LunarVim/breadcrumbs.nvim",
+    -- lazy = true,
+    dependencies = {
+      "SmiteshP/nvim-navic",
+    },
+    opts = {},
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     enabled = function()
       if vim.g.is_mac then
@@ -68,7 +88,7 @@ local plugin_specs = {
   -- Python-related text object
   { "jeetsukumaran/vim-pythonsense", ft = { "python" } },
 
-  { "machakann/vim-swap", event = "VeryLazy" },
+  { "machakann/vim-swap",            event = "VeryLazy" },
 
   -- IDE for Lisp
   -- 'kovisoft/slimv'
@@ -127,14 +147,14 @@ local plugin_specs = {
     config = true, -- or `opts = {}`
   },
   -- A list of colorscheme plugin you may want to try. Find what suits you.
-  { "navarasu/onedark.nvim", lazy = true },
-  { "sainnhe/edge", lazy = true },
-  { "sainnhe/sonokai", lazy = true },
-  { "sainnhe/gruvbox-material", lazy = true },
-  { "sainnhe/everforest", lazy = true },
-  { "EdenEast/nightfox.nvim", lazy = true },
-  { "catppuccin/nvim", name = "catppuccin", lazy = true },
-  { "olimorris/onedarkpro.nvim", lazy = true },
+  { "navarasu/onedark.nvim",       lazy = true },
+  { "sainnhe/edge",                lazy = true },
+  { "sainnhe/sonokai",             lazy = true },
+  { "sainnhe/gruvbox-material",    lazy = true },
+  { "sainnhe/everforest",          lazy = true },
+  { "EdenEast/nightfox.nvim",      lazy = true },
+  { "catppuccin/nvim",             name = "catppuccin", lazy = true },
+  { "olimorris/onedarkpro.nvim",   lazy = true },
   { "marko-cerovac/material.nvim", lazy = true },
 
   { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
@@ -216,24 +236,28 @@ local plugin_specs = {
   },
 
   -- Snippet engine and snippet template
-  { "SirVer/ultisnips", dependencies = {
-    "honza/vim-snippets",
-  }, event = "InsertEnter" },
+  {
+    "SirVer/ultisnips",
+    dependencies = {
+      "honza/vim-snippets",
+    },
+    event = "InsertEnter"
+  },
 
   -- Automatic insertion and deletion of a pair of characters
-  { "Raimondi/delimitMate", event = "InsertEnter" },
+  { "Raimondi/delimitMate",     event = "InsertEnter" },
 
   -- Comment plugin
-  { "tpope/vim-commentary", event = "VeryLazy" },
+  { "tpope/vim-commentary",     event = "VeryLazy" },
 
   -- Multiple cursor plugin like Sublime Text?
   -- 'mg979/vim-visual-multi'
 
   -- Autosave files on certain events
-  { "907th/vim-auto-save", event = "InsertEnter" },
+  { "907th/vim-auto-save",      event = "InsertEnter" },
 
   -- Show undo history visually
-  { "simnalamburt/vim-mundo", cmd = { "MundoToggle", "MundoShow" } },
+  { "simnalamburt/vim-mundo",   cmd = { "MundoToggle", "MundoShow" } },
 
   -- better UI for some nvim actions
   { "stevearc/dressing.nvim" },
@@ -248,10 +272,10 @@ local plugin_specs = {
   },
 
   -- Handy unix command inside Vim (Rename, Move etc.)
-  { "tpope/vim-eunuch", cmd = { "Rename", "Delete" } },
+  { "tpope/vim-eunuch",          cmd = { "Rename", "Delete" } },
 
   -- Repeat vim motions
-  { "tpope/vim-repeat", event = "VeryLazy" },
+  { "tpope/vim-repeat",          event = "VeryLazy" },
 
   { "nvim-zh/better-escape.vim", event = { "InsertEnter" } },
 
@@ -278,7 +302,7 @@ local plugin_specs = {
   },
 
   -- Auto format tools
-  { "sbdchd/neoformat", cmd = { "Neoformat" } },
+  { "sbdchd/neoformat",          cmd = { "Neoformat" } },
 
   -- Git command inside vim
   {
@@ -290,8 +314,8 @@ local plugin_specs = {
   },
 
   -- Better git log display
-  { "rbong/vim-flog", cmd = { "Flog" } },
-  { "akinsho/git-conflict.nvim", version = "*", config = true },
+  { "rbong/vim-flog",            cmd = { "Flog" } },
+  { "akinsho/git-conflict.nvim", version = "*",        config = true },
   {
     "ruifm/gitlinker.nvim",
     event = "User InGitRepo",
@@ -309,7 +333,7 @@ local plugin_specs = {
   },
 
   -- Better git commit experience
-  { "rhysd/committia.vim", lazy = true },
+  { "rhysd/committia.vim",              lazy = true },
 
   {
     "sindrets/diffview.nvim"
@@ -324,13 +348,13 @@ local plugin_specs = {
   },
 
   -- Another markdown plugin
-  { "preservim/vim-markdown", ft = { "markdown" } },
+  { "preservim/vim-markdown",           ft = { "markdown" } },
 
   -- Faster footnote generation
   { "vim-pandoc/vim-markdownfootnotes", ft = { "markdown" } },
 
   -- Vim tabular plugin for manipulate tabular, required by markdown plugins
-  { "godlygeek/tabular", cmd = { "Tabularize" } },
+  { "godlygeek/tabular",                cmd = { "Tabularize" } },
 
   -- Markdown previewing (only for Mac and Windows)
   {
@@ -364,14 +388,14 @@ local plugin_specs = {
     ft = { "markdown" },
   },
 
-  { "chrisbra/unicode.vim", event = "VeryLazy" },
+  { "chrisbra/unicode.vim",            event = "VeryLazy" },
 
   -- Additional powerful text object for vim, this plugin should be studied
   -- carefully to use its full power
-  { "wellle/targets.vim", event = "VeryLazy" },
+  { "wellle/targets.vim",              event = "VeryLazy" },
 
   -- Plugin to manipulate character pairs quickly
-  { "machakann/vim-sandwich", event = "VeryLazy" },
+  { "machakann/vim-sandwich",          event = "VeryLazy" },
 
   -- Add indent object for vim (useful for languages like Python)
   { "michaeljsmith/vim-indent-object", event = "VeryLazy" },
@@ -402,13 +426,16 @@ local plugin_specs = {
     ft = { "tmux" },
   },
 
+  -- Navigate between vim and tmux window using C-(hjkl)
+  { "christoomey/vim-tmux-navigator", event = "VeryLazy" },
+
   -- Modern matchit implementation
-  { "andymass/vim-matchup", event = "BufRead" },
-  { "tpope/vim-scriptease", cmd = { "Scriptnames", "Message", "Verbose" } },
+  { "andymass/vim-matchup",           event = "BufRead" },
+  { "tpope/vim-scriptease",           cmd = { "Scriptnames", "Message", "Verbose" } },
 
   -- Asynchronous command execution
-  { "skywind3000/asyncrun.vim", lazy = true, cmd = { "AsyncRun" } },
-  { "cespare/vim-toml", ft = { "toml" }, branch = "main" },
+  { "skywind3000/asyncrun.vim",       lazy = true,                                  cmd = { "AsyncRun" } },
+  { "cespare/vim-toml",               ft = { "toml" },                              branch = "main" },
 
   -- Edit text area in browser using nvim
   {
@@ -439,7 +466,7 @@ local plugin_specs = {
   },
 
   -- Session management plugin
-  { "tpope/vim-obsession", cmd = "Obsession" },
+  { "tpope/vim-obsession",   cmd = "Obsession" },
 
   {
     "ojroques/vim-oscyank",
@@ -480,7 +507,7 @@ local plugin_specs = {
     end,
   },
 
-  { "ii14/emmylua-nvim", ft = "lua" },
+  { "ii14/emmylua-nvim",    ft = "lua" },
   {
     "j-hui/fidget.nvim",
     event = "VeryLazy",
@@ -488,6 +515,74 @@ local plugin_specs = {
     config = function()
       require("config.fidget-nvim")
     end,
+  },
+
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
+
+  {
+    "karb94/neoscroll.nvim",
+    opts = {},
+  },
+
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    event = "VeryLazy",
+    configs = function()
+      require("config.null-ls")
+    end,
+  },
+
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "clangd",
+        "clang-format",
+        "codelldb",
+        "autopep8",
+        "beautysh",
+        "vim-language-server",
+        "lua-language-server",
+        "bash-language-server",
+        "ltex-ls",
+        "pylsp",
+      },
+    },
+  },
+
+  {
+    "rcarriga/nvim-dap-ui",
+    event = "VeryLazy",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio",
+    },
+    config = function()
+      require("config.nvim-dap-ui")
+    end,
+  },
+
+  { "nvim-neotest/nvim-nio" },
+
+  {
+    "jay-babu/mason-nvim-dap.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "mfussenegger/nvim-dap",
+    },
+    opts = {
+      handlers = {},
+    },
+  },
+
+  {
+    "mfussenegger/nvim-dap",
   },
 }
 

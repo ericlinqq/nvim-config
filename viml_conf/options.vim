@@ -124,7 +124,6 @@ set winblend=0  " pseudo transparency for floating window
 
 " Insert mode key word completion setting
 set complete+=kspell complete-=w complete-=b complete-=u complete-=t
-
 set spelllang=en,cjk  " Spell languages
 set spellsuggest+=9  " show 9 spell suggestions at most
 

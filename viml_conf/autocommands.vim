@@ -119,5 +119,15 @@ augroup LargeFile
   autocmd BufReadPre * call s:handle_large_file()
 augroup END
 
+augroup tmux_auto_mouse_off
+  autocmd!
+  autocmd VimEnter * silent !tmux set-option -g mouse off
+augroup END
+
+augroup tmux_auto_mouse_on
+  autocmd!
+  autocmd VimLeave * silent !tmux set-option -g mouse on
+augroup END
+
 " Load auto-command defined in Lua
 lua require("custom-autocmd")

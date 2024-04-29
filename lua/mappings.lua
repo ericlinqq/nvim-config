@@ -229,3 +229,6 @@ keymap.set("n", "<leader>cb", function()
     cnt = cnt + 1
   end))
 end)
+
+keymap.set("n", "<leader>db", "<cmd>DapToggleBreakpoint<cr>", { desc = "Add breakpoint at line" })
+keymap.set("n", "<leader>dr", "<cmd>DapContinue<cr>", { desc = "Start or continue the debugger" })
