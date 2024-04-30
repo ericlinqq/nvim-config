@@ -437,19 +437,19 @@ local plugin_specs = {
   { "cespare/vim-toml",               ft = { "toml" },                              branch = "main" },
 
   -- Edit text area in browser using nvim
-  {
-    "glacambre/firenvim",
-    enabled = function()
-      if vim.g.is_win or vim.g.is_mac then
-        return true
-      end
-      return false
-    end,
-    build = function()
-      vim.fn["firenvim#install"](0)
-    end,
-    lazy = true,
-  },
+  -- {
+  --   "glacambre/firenvim",
+  --   enabled = function()
+  --     if vim.g.is_win or vim.g.is_mac then
+  --       return true
+  --     end
+  --     return false
+  --   end,
+  --   build = function()
+  --     vim.fn["firenvim#install"](0)
+  --   end,
+  --   lazy = true,
+  -- },
 
   -- Debugger plugin
   {
