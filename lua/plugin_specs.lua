@@ -49,7 +49,7 @@ local plugin_specs = {
 
   {
     "SmiteshP/nvim-navic",
-    -- lazy = true,
+    lazy = true,
     dependencies = {
       "neovim/nvim-lspconfig",
     },
@@ -60,7 +60,6 @@ local plugin_specs = {
 
   {
     "LunarVim/breadcrumbs.nvim",
-    -- lazy = true,
     dependencies = {
       "SmiteshP/nvim-navic",
     },
