@@ -6,6 +6,7 @@ local diagnostic = vim.diagnostic
 
 local utils = require("utils")
 local navic = require("nvim-navic")
+local navbuddy = require("nvim-navbuddy")
 
 -- set quickfix list from diagnostics in a certain buffer, not the whole workspace
 local set_qflist = function(buf_num, severity)
@@ -16,7 +17,7 @@ local set_qflist = function(buf_num, severity)
   vim.fn.setqflist({}, ' ', { title = 'Diagnostics', items = qf_items })
 
   -- open quickfix by default
-  vim.cmd[[copen]]
+  vim.cmd [[copen]]
 end
 
 local custom_attach = function(client, bufnr)
@@ -53,13 +54,14 @@ local custom_attach = function(client, bufnr)
     api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
       callback = function()
-        lsp.buf.format({ bufnr = bufnr})
+        lsp.buf.format({ bufnr = bufnr })
       end,
     })
   end
 
   if client.server_capabilities.documentSymbolProvider then
     navic.attach(client, bufnr)
+    navbuddy.attach(client, bufnr)
   end
 
 
@@ -98,18 +100,18 @@ local custom_attach = function(client, bufnr)
     ]])
 
     local gid = api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-    api.nvim_create_autocmd("CursorHold" , {
+    api.nvim_create_autocmd("CursorHold", {
       group = gid,
       buffer = bufnr,
-      callback = function ()
+      callback = function()
         lsp.buf.document_highlight()
       end
     })
 
-    api.nvim_create_autocmd("CursorMoved" , {
+    api.nvim_create_autocmd("CursorMoved", {
       group = gid,
       buffer = bufnr,
-      callback = function ()
+      callback = function()
         lsp.buf.clear_references()
       end
     })
@@ -192,7 +194,7 @@ if utils.executable("ltex-ls") then
       },
     },
     flags = { debounce_text_changes = 300 },
-}
+  }
 end
 
 if utils.executable("clangd") then

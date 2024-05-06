@@ -59,6 +59,34 @@ local plugin_specs = {
   },
 
   {
+    "SmiteshP/nvim-navbuddy",
+    lazy = true,
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "SmiteshP/nvim-navic",
+      "MunifTanjim/nui.nvim",
+      "numToStr/Comment.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    opts = {
+      lsp = {
+        auto_attach = true,
+      },
+    },
+  },
+
+  {
+    "MunifTanjim/nui.nvim",
+    lazy = true,
+  },
+
+  {
+    "numToStr/Comment.nvim",
+    opts = {},
+    lazy = false,
+  },
+
+  {
     "LunarVim/breadcrumbs.nvim",
     dependencies = {
       "SmiteshP/nvim-navic",

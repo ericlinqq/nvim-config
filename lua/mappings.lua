@@ -217,7 +217,7 @@ keymap.set("n", "<leader>cb", function()
   local timer = uv.new_timer()
 
   timer:start(0, 100, vim.schedule_wrap(function()
-    vim.cmd[[
+    vim.cmd [[
       set cursorcolumn!
       set cursorline!
     ]]
@@ -232,3 +232,5 @@ end)
 
 keymap.set("n", "<leader>db", "<cmd>DapToggleBreakpoint<cr>", { desc = "Add breakpoint at line" })
 keymap.set("n", "<leader>dr", "<cmd>DapContinue<cr>", { desc = "Start or continue the debugger" })
+
+keymap.set("n", "<leader>nb", "<cmd>Navbuddy<cr>", { desc = "Open NavBuddy" })
