@@ -82,8 +82,7 @@ local plugin_specs = {
 
   {
     "numToStr/Comment.nvim",
-    opts = {},
-    lazy = false,
+    lazy = true,
   },
 
   {
